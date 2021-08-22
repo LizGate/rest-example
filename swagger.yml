@@ -1,0 +1,637 @@
+swagger: '2.0'
+info:
+  description: Online Order System
+  version: 1.0.0
+  title: User Api Dokümantasyonu
+  contact:
+    name: Anilcan Yurtbay
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+host: localhost:8080
+basePath: /
+tags:
+  - name: order-controller
+    description: Order Controller
+  - name: product-controller
+    description: Product Controller
+  - name: user-controller
+    description: User Controller
+paths:
+  /api/v1/account/confirm:
+    get:
+      tags:
+        - user-controller
+      summary: Account mail confirm token method
+      operationId: confirmUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: activate
+          in: query
+          description: activate
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: string
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /api/v1/account/list:
+    get:
+      tags:
+        - user-controller
+      summary: List all accounts method
+      operationId: getAllUsersUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/User%20Api%20Model%20Documentation'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /api/v1/account/login:
+    post:
+      tags:
+        - user-controller
+      summary: Login method
+      operationId: loginUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: loginUser
+          description: loginUser
+          required: true
+          schema:
+            $ref: '#/definitions/AccountCredential'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            additionalProperties:
+              type: string
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /api/v1/account/signup/customer:
+    post:
+      tags:
+        - user-controller
+      summary: Customer register method
+      operationId: createAccountCustomerUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: accountCredential
+          description: accountCredential
+          required: true
+          schema:
+            $ref: '#/definitions/AccountCredential'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: string
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /api/v1/account/signup/seller:
+    post:
+      tags:
+        - user-controller
+      summary: Seller register method
+      operationId: createAccountSellerUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: accountCredential
+          description: accountCredential
+          required: true
+          schema:
+            $ref: '#/definitions/AccountCredential'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: string
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /api/v1/api/v1/order/cancel/{id}:
+    put:
+      tags:
+        - order-controller
+      summary: Order cancel method
+      operationId: cancelOrderUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Order%20Api%20Model%20Documentation'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /api/v1/order/create:
+    post:
+      tags:
+        - order-controller
+      summary: Order create method
+      operationId: createOrderUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: order
+          description: order
+          required: true
+          schema:
+            $ref: '#/definitions/Order%20Api%20Model%20Documentation'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Order%20Api%20Model%20Documentation'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /api/v1/order/list/seller:
+    get:
+      tags:
+        - order-controller
+      summary: Order list for seller method
+      operationId: getSellerOrderUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Order%20Api%20Model%20Documentation'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /api/v1/order/list/user:
+    get:
+      tags:
+        - order-controller
+      summary: Order list for customer method
+      operationId: getUserOrderUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Order%20Api%20Model%20Documentation'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /api/v1/order/reject/{id}:
+    put:
+      tags:
+        - order-controller
+      summary: Order reject method
+      operationId: rejectOrderUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Order%20Api%20Model%20Documentation'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /api/v1/order/update/{id}:
+    put:
+      tags:
+        - order-controller
+      summary: Order accept and delivered method
+      operationId: updateOrderUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Order%20Api%20Model%20Documentation'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /api/v1/product/all:
+    get:
+      tags:
+        - product-controller
+      summary: Product list method
+      operationId: getAllProductsUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: description
+          in: query
+          description: description
+          required: false
+          type: string
+        - name: name
+          in: query
+          description: name
+          required: false
+          type: string
+        - name: outofstock
+          in: query
+          description: outofstock
+          required: false
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product%20Api%20Model%20Documentation'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /api/v1/product/create:
+    post:
+      tags:
+        - product-controller
+      summary: Product create method
+      operationId: createProductUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: product
+          description: product
+          required: true
+          schema:
+            $ref: '#/definitions/Product%20Api%20Model%20Documentation'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Product%20Api%20Model%20Documentation'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /api/v1/product/delete/{id}:
+    delete:
+      tags:
+        - product-controller
+      summary: Product delete method
+      operationId: deleteProductUsingDELETE
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: string
+            enum:
+              - ACCEPTED
+              - ALREADY_REPORTED
+              - BAD_GATEWAY
+              - BAD_REQUEST
+              - BANDWIDTH_LIMIT_EXCEEDED
+              - CHECKPOINT
+              - CONFLICT
+              - CONTINUE
+              - CREATED
+              - DESTINATION_LOCKED
+              - EXPECTATION_FAILED
+              - FAILED_DEPENDENCY
+              - FORBIDDEN
+              - FOUND
+              - GATEWAY_TIMEOUT
+              - GONE
+              - HTTP_VERSION_NOT_SUPPORTED
+              - IM_USED
+              - INSUFFICIENT_SPACE_ON_RESOURCE
+              - INSUFFICIENT_STORAGE
+              - INTERNAL_SERVER_ERROR
+              - I_AM_A_TEAPOT
+              - LENGTH_REQUIRED
+              - LOCKED
+              - LOOP_DETECTED
+              - METHOD_FAILURE
+              - METHOD_NOT_ALLOWED
+              - MOVED_PERMANENTLY
+              - MOVED_TEMPORARILY
+              - MULTIPLE_CHOICES
+              - MULTI_STATUS
+              - NETWORK_AUTHENTICATION_REQUIRED
+              - NON_AUTHORITATIVE_INFORMATION
+              - NOT_ACCEPTABLE
+              - NOT_EXTENDED
+              - NOT_FOUND
+              - NOT_IMPLEMENTED
+              - NOT_MODIFIED
+              - NO_CONTENT
+              - OK
+              - PARTIAL_CONTENT
+              - PAYLOAD_TOO_LARGE
+              - PAYMENT_REQUIRED
+              - PERMANENT_REDIRECT
+              - PRECONDITION_FAILED
+              - PRECONDITION_REQUIRED
+              - PROCESSING
+              - PROXY_AUTHENTICATION_REQUIRED
+              - REQUESTED_RANGE_NOT_SATISFIABLE
+              - REQUEST_ENTITY_TOO_LARGE
+              - REQUEST_HEADER_FIELDS_TOO_LARGE
+              - REQUEST_TIMEOUT
+              - REQUEST_URI_TOO_LONG
+              - RESET_CONTENT
+              - SEE_OTHER
+              - SERVICE_UNAVAILABLE
+              - SWITCHING_PROTOCOLS
+              - TEMPORARY_REDIRECT
+              - TOO_EARLY
+              - TOO_MANY_REQUESTS
+              - UNAUTHORIZED
+              - UNAVAILABLE_FOR_LEGAL_REASONS
+              - UNPROCESSABLE_ENTITY
+              - UNSUPPORTED_MEDIA_TYPE
+              - UPGRADE_REQUIRED
+              - URI_TOO_LONG
+              - USE_PROXY
+              - VARIANT_ALSO_NEGOTIATES
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  /api/v1/product/update/{id}:
+    put:
+      tags:
+        - product-controller
+      summary: Product update method
+      operationId: updateProductUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: integer
+          format: int32
+        - in: body
+          name: product
+          description: product
+          required: true
+          schema:
+            $ref: '#/definitions/Product%20Api%20Model%20Documentation'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Product%20Api%20Model%20Documentation'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+definitions:
+  AccountCredential:
+    type: object
+    required:
+      - email
+      - password
+      - username
+    properties:
+      address:
+        type: string
+      business_address:
+        type: string
+      business_name:
+        type: string
+      email:
+        type: string
+      password:
+        type: string
+      username:
+        type: string
+    title: Account Credential
+  Order Api Model Documentation:
+    type: object
+    properties:
+      createdAt:
+        type: string
+        format: date-time
+        description: Create time field of order object
+      id:
+        type: integer
+        format: int32
+        description: Unique id field of order object
+      productid:
+        type: integer
+        format: int32
+        description: Product id field of order object
+      quantity:
+        type: integer
+        format: int32
+        description: Quantity field of order object
+      status:
+        type: string
+        description: Status field of order object
+      updatedAt:
+        type: string
+        format: date-time
+        description: Update time field of order object
+      userid:
+        type: integer
+        format: int32
+        description: User id field of order object
+    title: Order Api Model Documentation
+    description: Model
+  Product Api Model Documentation:
+    type: object
+    properties:
+      description:
+        type: string
+        description: Description field of product object
+      id:
+        type: integer
+        format: int32
+        description: Unique id field of product object
+      name:
+        type: string
+        description: Name field of product object
+      quantity:
+        type: integer
+        format: int32
+        description: Quantity field of product object
+      userid:
+        type: integer
+        format: int32
+        description: User id field of product object
+    title: Product Api Model Documentation
+    description: Model
+  RoleEntity:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: Role Model Documentation
+  User Api Model Documentation:
+    type: object
+    properties:
+      address:
+        type: string
+        description: Address field of user object
+      business_address:
+        type: string
+        description: BusinessAddress field of user object
+      business_name:
+        type: string
+        description: BusinessName field of user object
+      email:
+        type: string
+        description: Email field of user object
+      id:
+        type: integer
+        format: int64
+        description: Unique id field of user object
+      password:
+        type: string
+        description: Password field of user object
+      roles:
+        type: array
+        description: Role field of user object
+        uniqueItems: true
+        items:
+          $ref: '#/definitions/RoleEntity'
+      username:
+        type: string
+        description: UserName field of user object
+    title: User Api Model Documentation
+    description: Model

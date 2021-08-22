@@ -1,0 +1,496 @@
+{
+	"info": {
+		"_postman_id": "d4a99828-f784-4f2e-aa55-0925dec4f62d",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Customer Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"hasanterzi\",\r\n    \"email\":\"terzih458@gmail.com\",\r\n    \"password\":\"123456\",\r\n    \"address\":\"kemeralti mahallesi 56. sokak\",\r\n    \"role_id\":2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/account/signup/customer",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"account",
+						"signup",
+						"customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Seller Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"hasanterzi\",\r\n    \"email\":\"terzih458@gmail.com\",\r\n    \"password\":\"123456\",\r\n    \"business_address\":\"kemeralti mahallesi 56. sokak\",\r\n    \"business_name\":\"Acayip bir kitapevi\",\r\n    \"role_id\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/account/signup/seller",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"account",
+						"signup",
+						"seller"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"hasanterzi\",\r\n    \"password\":\"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/account/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"account",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Product Create",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJTRUxMRVIiXSwiaXNzIjoiXCJleGFtcGxlXCIiLCJleHAiOjE2Mjk1NzAzNTEsInVzZXJJZCI6MTUsImVtYWlsIjoidGVyemloNDU4QGdtYWlsLmNvbSIsInVzZXJuYW1lIjoiaGFzYW50ZXJ6aSJ9.2lKrZlOO1Hv95EYj5l250AqTbmbqXZqwiLChsSgwJfE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"description\":\"Evliya çelebi\",\r\n    \"name\":\"Gezelim görelim\",\r\n    \"quantity\":21\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/product/create",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"product",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Product Read",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJTRUxMRVIiXSwiaXNzIjoiXCJleGFtcGxlXCIiLCJleHAiOjE2Mjk1NzAzNTEsInVzZXJJZCI6MTUsImVtYWlsIjoidGVyemloNDU4QGdtYWlsLmNvbSIsInVzZXJuYW1lIjoiaGFzYW50ZXJ6aSJ9.2lKrZlOO1Hv95EYj5l250AqTbmbqXZqwiLChsSgwJfE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/product/all",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"product",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Product Update",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJTRUxMRVIiXSwiaXNzIjoiXCJleGFtcGxlXCIiLCJleHAiOjE2Mjk1NzAzNTEsInVzZXJJZCI6MTUsImVtYWlsIjoidGVyemloNDU4QGdtYWlsLmNvbSIsInVzZXJuYW1lIjoiaGFzYW50ZXJ6aSJ9.2lKrZlOO1Hv95EYj5l250AqTbmbqXZqwiLChsSgwJfE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"1212 görelim\",\r\n    \"description\": \"55 çelebi\",\r\n    \"quantity\": 18\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/product/update/15",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"product",
+						"update",
+						"15"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Product Delete",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJTRUxMRVIiXSwiaXNzIjoiXCJleGFtcGxlXCIiLCJleHAiOjE2Mjk1NzAzNTEsInVzZXJJZCI6MTUsImVtYWlsIjoidGVyemloNDU4QGdtYWlsLmNvbSIsInVzZXJuYW1lIjoiaGFzYW50ZXJ6aSJ9.2lKrZlOO1Hv95EYj5l250AqTbmbqXZqwiLChsSgwJfE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/product/delete/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"product",
+						"delete",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order Create",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJTRUxMRVIiXSwiaXNzIjoiXCJ0ZXN0XCIiLCJleHAiOjE2Mjk2NzgyMDUsInVzZXJJZCI6MTUsImVtYWlsIjoidGVyemloNDU4QGdtYWlsLmNvbSIsInVzZXJuYW1lIjoiaGFzYW50ZXJ6aSJ9.Wi3dcOAjKWSpBUTthEc8L8SVo9RpZ2Gc5xHycLSlb6E",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"productid\":5,\r\n    \"quantity\":3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/order/create",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"order",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order Seller Read",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJTRUxMRVIiXSwiaXNzIjoiXCJleGFtcGxlXCIiLCJleHAiOjE2Mjk1NzAzNTEsInVzZXJJZCI6MTUsImVtYWlsIjoidGVyemloNDU4QGdtYWlsLmNvbSIsInVzZXJuYW1lIjoiaGFzYW50ZXJ6aSJ9.2lKrZlOO1Hv95EYj5l250AqTbmbqXZqwiLChsSgwJfE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/order/list/seller",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"order",
+						"list",
+						"seller"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order User Read",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJTRUxMRVIiXSwiaXNzIjoiXCJleGFtcGxlXCIiLCJleHAiOjE2Mjk1NzAzNTEsInVzZXJJZCI6MTUsImVtYWlsIjoidGVyemloNDU4QGdtYWlsLmNvbSIsInVzZXJuYW1lIjoiaGFzYW50ZXJ6aSJ9.2lKrZlOO1Hv95EYj5l250AqTbmbqXZqwiLChsSgwJfE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/order/list/user",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"order",
+						"list",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order Reject",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJTRUxMRVIiXSwiaXNzIjoiXCJleGFtcGxlXCIiLCJleHAiOjE2Mjk1NzAzNTEsInVzZXJJZCI6MTUsImVtYWlsIjoidGVyemloNDU4QGdtYWlsLmNvbSIsInVzZXJuYW1lIjoiaGFzYW50ZXJ6aSJ9.2lKrZlOO1Hv95EYj5l250AqTbmbqXZqwiLChsSgwJfE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/order/reject/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"order",
+						"reject",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order Cancel",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJTRUxMRVIiXSwiaXNzIjoiXCJleGFtcGxlXCIiLCJleHAiOjE2Mjk1NzAzNTEsInVzZXJJZCI6MTUsImVtYWlsIjoidGVyemloNDU4QGdtYWlsLmNvbSIsInVzZXJuYW1lIjoiaGFzYW50ZXJ6aSJ9.2lKrZlOO1Hv95EYj5l250AqTbmbqXZqwiLChsSgwJfE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/order/cancel/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"order",
+						"cancel",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order Accept and Deliver",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJTRUxMRVIiXSwiaXNzIjoiXCJleGFtcGxlXCIiLCJleHAiOjE2Mjk1NzAzNTEsInVzZXJJZCI6MTUsImVtYWlsIjoidGVyemloNDU4QGdtYWlsLmNvbSIsInVzZXJuYW1lIjoiaGFzYW50ZXJ6aSJ9.2lKrZlOO1Hv95EYj5l250AqTbmbqXZqwiLChsSgwJfE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/order/update/4",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"order",
+						"update",
+						"4"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
